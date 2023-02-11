@@ -1,0 +1,10 @@
+footer {
+    text-align: center;
+    height: 200px;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+footer p {
+    padding-top: calc(4.5%);
+}

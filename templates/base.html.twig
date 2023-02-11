@@ -2,18 +2,50 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="referrer" content="no-referrer-when-downgrade" />
+        <title>{% block title %}Welcome!{% endblock %}</title>        
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.2/css/all.css">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset("css/reset.css") ~ "?v=" ~ random() }}">
+        <link rel="stylesheet" href="{{ asset("css/style.css") ~ "?v=" ~ random() }}">
+        <link rel="stylesheet" href="{{ asset("css/navbar.css") ~ "?v=" ~ random() }}">
+        <link rel="stylesheet" href="{{ asset("css/footer.css") ~ "?v=" ~ random() }}">
+        {% block css %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
+        {% block js %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
+        {% block navbar %}
+        <nav>
+            <a href="{{ path('app_accueil') }}" class="nav-link"><img src="{{ asset('images/assets/adrar-classrooms-logo.png') }}" alt="Logo du site ADRAR Classrooms"></a>
+            <a href="{{ path('app_accueil') }}" class="wii">Classrooms</a>
+            <a href="{{ path('app_accueil') }}" class="nav-link active">Accueil</a>
+            <a href="{{ path('app_formations') }}" class="nav-link">Formations</a>
+            <input type="search" name="form_search" placeholder="Rechercher (langages, mots-clés, cours, ...)"/>
+            <i class="far fa-search"></i>
+            {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_admin') }}" class="nav-link">Administration</a>
+                {% endif %}
+                <span class="nav-link">{{ app.user.prenom|capitalize ~ " " ~ app.user.nom|upper }}</span>
+                <img src="{{ asset("images/users/" ~ app.user.image) }}" class="user-avatar"/>
+                <a href="{{ path('app_deconnexion') }}" class="nav-link btn-outline btn-outline-primary">Se déconnecter</a>
+            {% else %}
+                <a href="{{ path('app_connexion') }}" class="nav-link btn-outline btn-outline-primary">Se connecter</a>
+                <a href="{{ path('app_inscription') }}" class="nav-link btn-outline btn-outline-primary">S'inscrire</a>
+            {% endif %}
+        </nav>
+        {% endblock %}
         {% block body %}{% endblock %}
+        {% block footer %}
+        <footer>
+            <p>{{ date()|date('Y') }} &copy; ADRAR Classrooms. Tous droits réservés.</p>
+        </footer>
+        {% endblock %}
     </body>
 </html>

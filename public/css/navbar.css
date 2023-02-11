@@ -1,0 +1,45 @@
+nav {
+    padding: 0 50px;
+    background-color: #000000;
+}
+
+nav * {
+    vertical-align: middle;
+}
+
+.wii {
+    font-size: 2em;
+    text-decoration: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #999999;
+    margin-left: 20px;
+    font-size: 1.5em;
+}
+
+.nav-link.active {
+    color: #FFFFFF;
+}
+
+input[name="form_search"] {
+    border: 1px solid #999999;
+    border-radius: 3px;
+    background-color: #000000;
+    color: #999999;
+    padding: 20px 17px 20px 40px;
+    height: 25px;
+}
+
+i.fa-search {
+position: sticky;
+    top: calc(3.2%);
+    right: calc(68.5%);
+}
+
+.user-avatar {
+    border-radius: 25px;
+    height: 60px;
+    width: 60px;
+}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/inscription.css') ~ "?v=" ~ random() }}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block body %}
+<section>
+    <div class="cote-gauche">
+        <h1>Bienvenue sur <div class="inscription-titre wii">ADRAR Classrooms</div></h1>
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.prenom, {
+                label: 'Prénom',
+                label_attr: {
+                    class: 'label'
+                }
+            }) }}
+            {{ form_row(registrationForm.nom, {
+                label: 'Nom',
+                label_attr: {
+                    class: ''
+                }
+            }) }}
+            {{ form_row(registrationForm.email, {
+                label: 'E-mail',
+                label_attr: {
+                    class: ''
+                }
+            }) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de passe'
+            }) }}
+            {{ form_row(registrationForm.image, {
+                label: 'Image',
+                label_attr: {
+                    class: ''
+                }
+            }) }}
+
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+    <div class="cote-droit">
+        <p class="retour-personne">&laquo; Pôle-emploi m'a fait part des centres de formations et m'a notamment recommandé ADRAR Classrooms, la plateforme en ligne. Après 6 mois, j'étais diplômée et j'ai pu trouver un emploi un mois après ma sortie de formation. &raquo;</p>
+        <p class="identite-personne">Justine - UX Designer</p>
+        <img class="image-personne" src="{{ asset("images/assets/jeune_femme_souriante.png") }}" />
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}{% endblock %}

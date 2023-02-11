@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ asset('css/connexion.css') ~ "?v=" ~ random() }}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block body %}
+<section>
+    <div class="cote-gauche">
+        <h1 class="connexion-titre wii">ADRAR Classrooms</h1>
+
+        <h2>Bienvenue</h2>
+
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <label for="inputEmail">E-mail</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+
+            <button class="btn btn-primary" type="submit">
+                Se connecter
+            </button>
+        </form>
+        <hr class="regle-horizontale-perso">
+        
+        <div class="texte-autres-options">ou continuer avec</div>
+        
+        <div id="g_id_onload"
+            data-client_id="544368082224-fa06l9k8j267d2bek7cj3suhmu383u4f.apps.googleusercontent.com"
+            data-context="signin"
+            data-ux_mode="popup"
+            data-login_uri="{{ path("app_accueil") }}"
+            data-nonce=""
+            data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin"
+            data-type="icon"
+            data-shape="square"
+            data-theme="outline"
+            data-text="continue_with"
+            data-size="large"
+            data-locale="fr">
+        </div>
+
+    </div>
+
+    <div class="cote-droit">
+        <p class="retour-personne">&laquo; J'étais musicien indépendant, mais la COVID a tout stoppé. On m’a parlé d’ADRAR Classrooms, ça m'a ouvert des opportunités professionnelles insoupçonnées. &raquo;</p>
+        <p class="identite-personne">Alexandre - Développeur Full-Stack Junior</p>
+        <img class="image-personne" src="{{ asset("images/assets/homme_heureux.png") }}" />
+    </div>
+
+</section>
+
+
+    {% block js %}
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+    {% endblock %}
+{% endblock %}

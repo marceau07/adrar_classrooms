@@ -1,0 +1,81 @@
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+
+.cote-gauche {
+    background-color: #000;
+    text-align: center;
+}
+
+.cote-droit {
+    background-color: #8CC04D;
+}
+
+.connexion-titre {
+    margin-top: 30px;
+    font-size: 3em;
+}
+
+h2 {
+    color: #FFFFFF;
+    font-size: 2.5em;
+    line-height: 18px;
+    margin-top: 145px;
+}
+
+.retour-personne {
+    margin: 100px 100px 0 100px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.identite-personne {
+    margin: 0 100px;
+    line-height: 30px;
+}
+
+.image-personne {
+    position: absolute;
+    padding-left: 10%;
+    bottom: 0;
+}
+
+form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    margin: 100px 100px 0 100px;
+}
+
+label {
+    color: #FFFFFF;
+    text-align: left;
+}
+
+label, input {
+    margin-bottom: 10px;
+}
+
+.regle-horizontale-perso {
+    margin: 32px 100px 0 100px;
+}
+
+.texte-autres-options {
+    background-color: #000000;
+    color: #FFFFFF;
+    width: 160px;
+    position: absolute;
+    left: calc(20.75%);
+    top: calc(65%);
+}
+
+.g_id_signin {
+    margin-left: calc(48%);
+    margin-top: calc(3%);
+}
+
+.btn {
+    margin-top: 15px;
+}

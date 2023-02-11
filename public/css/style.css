@@ -1,0 +1,79 @@
+@font-face {
+    font-family: Wii;
+    src: url("/fonts/contb.ttf");
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("/fonts/Inter-Regular.ttf");
+}
+
+* {
+    font-family: 'Inter';
+    --primary: #5584AC;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.wii {
+    font-family: Wii;
+    color: var(--primary);
+}
+
+.btn {
+    padding: 20px 0;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 1.25em;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #FFFFFF;
+}
+
+.btn-outline {
+    padding: 10px;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 5px;
+    font-size: 1.25em;
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    background-color: transparent;
+}
+
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.bg-black {
+    background-color: #000000;
+}
+
+.form-control {
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    font-size: 1.25em;
+    background-color: #000000;
+    border-radius: 3px;
+    height: 45px;
+}
+
+.form-file {
+    color: #FFFFFF;
+    font-size: 1.25em;
+    background-color: #000000;
+    height: 45px;
+}
+
+i {
+    color: #FFFFFF;
+    font-size: 1.5em;
+}
