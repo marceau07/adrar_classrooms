@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block body %}
+    {% if app.user %}
     <section>
         <div class="cours-resume" style="background-color: var(--color-{{ col }});">
             <span class="cours-titre">{{ cours.titre }}</span>
@@ -25,18 +26,19 @@
             <div class="cours-chapitres">
                 <table>
                     <tr>
+                        {% for i in chapitres %}
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        {% endfor %}
                     </tr>
                 </table>
             </div>
             <div class="cours-certificat"></div>
         </div>
+        
+        <div class="cours-contenu">
+            {{ dump(chapitre)}}
+            {# {{ chapitre.contenu|raw }} #}
+        </div>
     </section>
+    {% endif %}
 {% endblock %}

@@ -10,7 +10,7 @@
     <div class="conteneur">
         {% set col = 0 %}
         {% for cours in list_cours %}
-            <a class="carte-formation" href="{{ path('app_cours', {'titre': cours.titre, 'col': col}) }}">
+            <a class="carte-formation" href="{{ path('app_cours', {'titre': cours.titre, 'id': cours.id, 'col': col}) }}">
                 <div class="carte-image" style="background-color: var(--color-{{ col }});">
                     {% if cours.image is defined %}
                     <img src="{{ asset('images/cours/' ~ cours.image) }}" alt/>

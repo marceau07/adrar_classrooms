@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Utilisateurs;
+use App\Repository\ChapitresRepository;
 use App\Repository\CoursRepository;
+use App\Repository\UtilisateursChapitresRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,13 +22,17 @@ class FormationsController extends AbstractController
         ]);
     }
     
-    #[Route('/cours-{titre}/{col}', name: 'app_cours')]
-    public function cours(string $titre, int $col, CoursRepository $cours): Response
+    #[Route('/cours-{titre}-{id}-chapitre/{col}', name: 'app_cours')]
+    public function cours(string $titre, int $id, int $col, CoursRepository $cours, ChapitresRepository $chapitres, UtilisateursChapitresRepository $utilisateursChapitres): Response
     {
         $cours = $cours->findOneBy(['titre' => $titre]);
+        $list_chapitres = $cours->getChapitres();
+        $chapitre = $utilisateursChapitres->getUtilisateursChapitres($id, $chapitres);
         
         return $this->render('formations/cours.html.twig', [
             'cours' => $cours,
+            'chapitres' => $list_chapitres,
+            'chapitre' => $chapitre,
             'col' => $col,
         ]);
     }
