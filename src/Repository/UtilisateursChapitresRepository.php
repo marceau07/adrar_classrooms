@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Chapitres;
 use App\Entity\UtilisateursChapitres;
+use App\Repository\ChapitresRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,6 +41,28 @@ class UtilisateursChapitresRepository extends ServiceEntityRepository
         }
     }
 
+    public function getUtilisateursChapitres(int $id, ChapitresRepository $chapitre_repository): ?array
+    {
+        return $this->createQueryBuilder('u')
+                //->andWhere('u.chapitre = :chapitre')
+                //->setParameter('chapitre', $id)
+                ->orderBy('u.id', 'DESC')
+                ->getQuery()
+                ->getResult();
+        $chapitreUtilisateur = $this->createQueryBuilder('u')
+                                ->andWhere('u.chapitre = :chapitre')
+                                ->setParameter('chapitre', $id)
+                                ->orderBy('u.id', 'DESC')
+                                ->getQuery()
+                                ->getOneOrNullResult();
+        if($chapitreUtilisateur != null) {
+            $chapitre = $chapitre_repository->find($chapitreUtilisateur->getId());
+        } else {
+            $chapitre = $chapitre_repository->findBy(['cours' => $id])[0];
+        }
+        return $chapitre;
+    }
+
 //    /**
 //     * @return UtilisateursChapitres[] Returns an array of UtilisateursChapitres objects
 //     */
@@ -63,4 +87,5 @@ class UtilisateursChapitresRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
 }
