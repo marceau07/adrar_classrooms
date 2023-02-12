@@ -45,7 +45,12 @@
         {% block footer %}
         <footer>
             <p>{{ date()|date('Y') }} &copy; ADRAR Classrooms. Tous droits réservés.</p>
+            <span id="scroll-up">
+                <i class="far fa-chevron-up"></i>
+                <i class="far fa-chevron-up"></i>
+            </span>
         </footer>
         {% endblock %}
+        <script src="{{ asset('js/app.js') ~ "?v=" ~ random() }}"></script>
     </body>
 </html>

@@ -84,3 +84,14 @@ i {
     color: #FFFFFF;
     font-size: 1.5em;
 }
+
+#scroll-up {
+    display: inline-grid;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--primary);
+    padding: 0 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+}

@@ -19,13 +19,14 @@ class FormationsController extends AbstractController
         ]);
     }
     
-    #[Route('/cours-{titre}', name: 'app_cours')]
-    public function cours(string $titre, CoursRepository $cours): Response
+    #[Route('/cours-{titre}/{col}', name: 'app_cours')]
+    public function cours(string $titre, int $col, CoursRepository $cours): Response
     {
         $cours = $cours->findOneBy(['titre' => $titre]);
         
         return $this->render('formations/cours.html.twig', [
             'cours' => $cours,
+            'col' => $col,
         ]);
     }
 }

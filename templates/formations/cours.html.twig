@@ -7,5 +7,36 @@
 {% endblock %}
 
 {% block body %}
-    
+    <section>
+        <div class="cours-resume" style="background-color: var(--color-{{ col }});">
+            <span class="cours-titre">{{ cours.titre }}</span>
+            <div class="resume-gauche">
+                <span class="cours-temps"><i class="far fa-clock"></i>&nbsp;&nbsp;{{ cours.tempsestime }}h</span>
+                <span class="cours-niveau"><i class="fas fa-signal"></i>&nbsp;&nbsp;{{ cours.niveau }}</span>
+            </div>
+            <div class="resume-droit">
+                <span class="cours-pdf"><i class="fas fa-file-pdf"></i></span>&nbsp;&nbsp;
+                <span class="cours-date">{{ cours.date|date("d/m/Y") }}</span>
+            </div>
+        </div>
+        
+        <div class="cours-progression">
+            <div class="cours-presentation"></div>
+            <div class="cours-chapitres">
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="cours-certificat"></div>
+        </div>
+    </section>
 {% endblock %}
