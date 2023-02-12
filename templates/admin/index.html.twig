@@ -1,20 +1,102 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Admin{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Projects/VisualStudioProjects/adrar_classrooms/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Projects/VisualStudioProjects/adrar_classrooms/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {% if is_granted("ROLE_ADMIN") %}
+	<div class="admin-panel clearfix">
+		<div class="slidebar">
+			<div class="logo">
+				<a href="{{ path('app_accueil') }}"></a>
+			</div>
+			<ul>
+				<li><a href="#dashboard">Dashboard</a></li>
+				<li><a href="#utilisateurs">Utilisateurs</a></li>
+				<li><a href="#cours">Cours</a></li>
+				<li><a href="#chapitres">Chapitres</a></li>
+				<li><a href="#parametres">Paramètres</a></li>
+			</ul>
+		</div>
+		<div class="main">
+			<div class="mainContent clearfix">
+				<div id="dashboard">
+					<h2 class="header">
+						<span class="icon"></span>
+                        Dashboard
+                    </h2>
+					<div class="monitor">
+						<h4>Utilisateurs ayant vérifié leur compte</h4>
+						<div class="clearfix text-center">
+							ICI votre indicateur camembert
+						</div>
+					</div>
+					<div class="monitor">
+						<h4>Stats HTML</h4>
+						<div class="clearfix text-center">
+							ICI votre indicateur camembert
+						</div>
+					</div>
+					<div class="monitor">
+						<h4>Stats CSS</h4>
+						<div class="clearfix text-center">
+							ICI votre indicateur camembert
+						</div>
+					</div>
+					<div class="monitor">
+						<h4>Stats JS</h4>
+						<div class="clearfix text-center">
+							ICI votre indicateur camembert
+						</div>
+					</div>
+					<div class="monitor">
+						<h4>Stats React</h4>
+						<div class="clearfix text-center">
+							ICI votre indicateur camembert
+						</div>
+					</div>
+					<div class="monitor">
+						<h4>Stats Maquetage</h4>
+						<div class="clearfix text-center">
+							ICI votre indicateur camembert
+						</div>
+					</div>
+					<div class="monitor">
+						<h4>Stats PHP</h4>
+						<div class="clearfix text-center">
+							ICI votre indicateur camembert
+						</div>
+					</div>
+					<div class="monitor">
+						<h4>Stats Symfony</h4>
+						<div class="clearfix text-center">
+							ICI votre indicateur camembert
+						</div>
+					</div>
+				</div>
+				<div id="utilisateurs">
+					<h2 class="header">Utilisateurs</h2>
+				</div>
+				<div id="cours">
+					<h2 class="header">Cours</h2>
+				</div>
+				<div id="chapitres">
+					<h2 class="header">Chapitres</h2>
+				</div>
+				<div id="parametres">
+					<h2 class="header">Paramètres</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+    {% else %}
+        {% include "errors/_404.html.twig" %}
+    {% endif %}
 {% endblock %}
+
+{% block footer %}{% endblock %}
