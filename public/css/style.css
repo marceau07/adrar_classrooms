@@ -11,6 +11,13 @@
 * {
     font-family: 'Inter';
     --primary: #5584AC;
+    --color-0: #8CC04D;
+    --color-1: #F7A60F;
+    --color-2: #E94C39;
+    --color-3: #5EC2EF;
+    --color-4: #FFFFFF;
+    --color-5: #006fee;
+    --color-6: #03f3cb;
 }
 
 body {

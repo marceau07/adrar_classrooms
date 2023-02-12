@@ -1,20 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FormationsController!{% endblock %}
+{% block title %}Liste des cours{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/formations.css') ~ "?v=" ~ random() }}">
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Projects/VisualStudioProjects/adrar_classrooms/src/Controller/FormationsController.php'|file_link(0) }}">src/Controller/FormationsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Projects/VisualStudioProjects/adrar_classrooms/templates/formations/index.html.twig'|file_link(0) }}">templates/formations/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="conteneur">
+        {% set col = 0 %}
+        {% for cours in list_cours %}
+            <a class="carte-formation" href="{{ path('app_cours', {'titre': cours.titre}) }}">
+                <div class="carte-image" style="background-color: var(--color-{{ col }});">
+                    {% if cours.image is defined %}
+                    <img src="{{ asset('images/cours/' ~ cours.image) }}" alt/>
+                    {% endif %}
+                </div>
+                <div class="carte-details">
+                    <p style="color: var(--primary);">Cours</p>
+                    <p class="carte-titre">{{ cours.titre }}</p>
+                    <br>
+                    <p>
+                        <span class="carte-niveau"><i class="fas fa-signal"></i>&nbsp;&nbsp;{{ cours.niveau }}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="carte-temps"><i class="far fa-clock"></i>&nbsp;&nbsp;{{ cours.tempsestime }}</span>
+                    </p>
+                    <br>
+                    <p>{{ cours.synopsis }}</p>
+                </div>
+            </a>
+            {% set col = col + 1 %}
+        {% endfor %}
+    </div>
 {% endblock %}

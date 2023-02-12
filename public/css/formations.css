@@ -1,0 +1,31 @@
+.conteneur {
+    padding: 15px 0;
+    background-color: var(--primary);
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 15px;
+    align-content: center;
+    justify-items: center;
+}
+
+.carte-formation {
+    background-color: #000000;
+    border: 1px solid #999999;
+    width: calc(50vw);
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    text-decoration: none;
+}
+
+.carte-image {
+    background-color: #999999;
+    margin: 15px 0 15px 15px;
+    width: 300px;
+    height: 150px;
+}
+
+.carte-details {
+    padding-top: 15px;
+    margin-left: calc(10vw);
+    color: #FFFFFF;
+}
