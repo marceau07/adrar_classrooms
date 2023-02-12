@@ -41,3 +41,7 @@ section {
     display: flex;
     justify-content: center;
 }
+
+.cours-contenu {
+    margin: 50px 100px 50px 100px;
+}
